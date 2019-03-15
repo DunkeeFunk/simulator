@@ -1,5 +1,6 @@
 import numpy as np
 
+
 '''
 Class for simulating temperature data. 
 Quarters : temperatures at 12am, 6am, 12pm, 6pm 

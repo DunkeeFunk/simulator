@@ -1,7 +1,11 @@
 import numpy as np
 import random
 
-
+''' 
+this code is all wrong and more of a sandbox for me to try things out in.
+Excuse the ignorance, I was trying to randomise the data. It was wrote before i found out 
+how to add noise with a normal dist 
+'''
 #  Weather Assumption's
 first_q = 6.7
 second_q = 5.6

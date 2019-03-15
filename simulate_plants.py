@@ -14,11 +14,9 @@ class Simulate:
     def oneday(self, temp_quarters, humid_qs, soil_from, soil_to, light_from, light_to, condition):
         '''
             example data of one bad day in march
-            condition = "bad"
-            temp_dev = [0.2, 0.3, 0.2, 0.3] no longer required - noise added
-            temp_quarters = [6.7, 5.6, 8.2, 8.1]
-            humid_dev = [5, 3, 2, 4]
-            humid_qs = [78.0, 94.0, 60.0, 76.0]
+            condition = 1 for bad, 2 for medium, 3 for good, for machine learning
+            temp_quarters = [6.7, 5.6, 8.2, 8.1] randomised with a normal dist
+            humid_qs = [78.0, 94.0, 60.0, 76.0] randomised with a normal dist
             soil_from = 0
             soil_to = 97
             light_from = 24
@@ -40,7 +38,7 @@ class Simulate:
         # light day
         light_sim = LightSimulator(light_from, light_to)
         light_day = light_sim.light_data_generator()
-
+        # 96 measurements in a full day, 15 min intervals
         condition_array = np.full(96, condition)
 
         # wrap it up in a dict and throw it into a df
