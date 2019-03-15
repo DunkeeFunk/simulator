@@ -33,7 +33,7 @@ class HumiditySimulator:
         # one full day
         one_full_day = np.concatenate((q_one_array, q_two_array, q_three_array, q_four_array), axis=None)
         # adding randomness   mean std bins
-        noise = np.random.normal(0, 3, 96)
+        noise = np.random.normal(0, 1.5, 96)
         one_full_day = one_full_day + noise
 
         return one_full_day
