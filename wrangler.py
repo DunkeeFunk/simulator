@@ -5,6 +5,7 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn import svm
+from sklearn.neighbors import KNeighborsClassifier
 
 sim = Simulate("thing")
 # bad data
@@ -34,16 +35,22 @@ good = good.reset_index(drop=True)
 data = pd.concat([bad, good])
 data = data.reset_index(drop=True)
 # need a nice shape
-X = np.array(data.drop(['soil_m'], 1))
-y = np.array(data[["temp", "humidity", "light", "condition"]])
+X = np.array(data[['temp', 'humidity', 'light']])  # try this
+# X = np.array(data[['temp', 'humidity', 'light', 'condition']])
+# y = np.array(data[['soil_m']]).reshape((1, int(data[['soil_m']].size)))
+y = np.array(data[['soil_m']])
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
-
+# need to make the data go across the ways not down the way
+# y_train = y_train.reshape((1, int(y_train.size)))
+# try this one out for banter
+neigh = KNeighborsClassifier(n_neighbors=3)
+neigh.fit(X_train, y_train)
 clf = svm.SVC()
 # bad shape error it wants two arrays of the same size, my eyes are sore come back to this later
 clf.fit(X_train, y_train)
 
-accur = clf.score(X_test,y_test)
+accur = clf.score(X_test, y_test)
 
 
 
