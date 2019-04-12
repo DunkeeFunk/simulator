@@ -8,6 +8,8 @@
 
 4.) classify data with one of the classify functions provided
 
+# Install
+
 ```bash
 pip install -r requirements.txt
 ```
